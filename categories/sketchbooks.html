@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<!--
+	Multiverse by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Sorrow and Serenity</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<canvas id="starfield"></canvas>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>
+							<a href="../index.html">between sorrow and serenity</a>
+							<span class="home-label">- SKETCHBOOKS</span>
+						</h1>
+						<nav>
+							<ul>
+								<li><a href="#footer" class="icon solid fa-info-circle">About me</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main --> 
+					<div id="main">
+						
+					<!-- Sketchbook 1 --> 
+						<article class="thumb category"> 
+						<a href="sketchbook_1.html" class="category-link"> 
+						<img src="../images/sketchbook_1/thumbs/sketch_th_64.WebP" alt="Sketchbook 1" loading="lazy" decoding="async" /> 
+						</a> 
+						<h2>Sketchbook 1</h2> 
+						<p>Explore my sketchbook 1.</p> 
+						</article> 
+					<!-- Sketchbook 2 --> 
+						<article class="thumb category"> 
+						<a href="sketchbook_2.html" class="category-link"> 
+						<img src="../images/sketchbook_2/thumbs/sketch2_th_55.WebP" alt="Sketchbook 2" loading="lazy" decoding="async" /> 
+						</a> <h2>Sketchbook 2</h2> 
+						<p>Explore my sketchbook 2.</p> 
+						</article> 
+	
+					</div>
+				</div>
+
+	<!-- Footer PLATZHALTER -->
+			<div id="footer-container"></div></div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.poptrox.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			
+			<!-- Footer laden -->
+			<script>
+			fetch("../footer.html")
+				.then(response => {
+					if (!response.ok) {
+						throw new Error("Footer konnte nicht geladen werden.");
+					}
+					return response.text();
+				})
+				.then(html => {
+					document.getElementById("footer-container").outerHTML = html;
+
+					// main.js laden
+					const script = document.createElement("script");
+					script.src = "../assets/js/main.js";
+					document.body.appendChild(script);
+				})
+				.catch(error => {
+					console.error(error);
+				});
+			</script>
+			<script src="../assets/js/starfield.js"></script>
+	</body>
+</html>

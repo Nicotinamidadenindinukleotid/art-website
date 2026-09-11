@@ -1256,11 +1256,11 @@ input, select, textarea {
 			-webkit-transform: scaleX(-1);
 			-ms-transform: scaleX(-1);
 			transform: scaleX(-1);
-			left: 0;
+			left: -6em;
 		}
 
 		.poptrox-popup .nav-next {
-			right: 0;
+			right: -6em;
 		}
 
 		.poptrox-popup .caption {
@@ -1505,6 +1505,17 @@ input, select, textarea {
 				#header h1 a:hover {
 					color: inherit !important;
 				}
+
+			#header h1 a {
+			border: 0;
+			color: inherit;
+			transition: opacity 0.3s ease;
+			}
+
+			#header h1 a:hover {
+				color: inherit !important;
+				opacity: 0.6;
+			}
 
 		#header nav {
 			position: absolute;
@@ -2042,13 +2053,134 @@ input, select, textarea {
 
 	#footer .copyright {
 		color: #505051;
-		font-size: 0.9em;
+		font-size: 0.7em;
 	}
 
 		#footer .copyright a {
 			color: inherit;
 		}
 
+	#footer h3 {
+		margin-bottom: 0.3em;
+	}
+	#footer h5 {
+		margin-bottom: 0.3em;
+	}
+	
+	#footer .about-text {
+    font-size: 1em;
+    line-height: 1.7;
+	margin-bottom: 0.4em;
+}
+
+
+
+/* =========================================================
+   Category Cards
+   ========================================================= */
+
+#main .category > .category-link {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+#main .category > .category-link img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Keep the category title above the image */
+#main .category > h2 {
+    z-index: 1;
+}
+
+/* Make the entire category card clickable */
+#main .category {
+    cursor: pointer;
+}
+
+#main .category {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Bild abdunkeln */
+#main .category > .category-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease-in-out;
+    z-index: 1;
+}
+
+/* Titel exakt mittig */
+#main .category > h2 {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.8em;
+    font-weight: 100;
+    z-index: 2;
+}
+
+/* Beim Darüberfahren Bild etwas aufhellen */
+#main .category:hover > .category-link::after {
+    background: rgba(0, 0, 0, 0.10);
+}
+
+/* Container-Anpassung, NUR wenn Kategorien enthalten sind */
+#main:has(.category) {
+    display: flex;
+    justify-content: center; /* Horizontale Zentrierung */
+    align-content: center;   /* Vertikale Zentrierung bei mehreren Zeilen */
+    align-items: center;     /* Vertikale Zentrierung bei einer Zeile */
+    
+    min-height: calc(100vh - 4em); /* Nutzt die gesamte Bildschirmhöhe abzüglich Header/Footer */
+    
+    gap: 1.5em;              /* Abstand zwischen den Kategorien */
+    padding: 1.5em;          /* Abstand zu den Rändern */
+}
+
+/* Breitenanpassung NUR für Kategorie-Karten, damit sie mit 'gap' in die Zeile passen */
+#main .thumb.category {
+    width: calc(25% - 1.2em);
+}
+
+/* Responsive Anpassungen NUR für Kategorien */
+@media screen and (max-width: 1680px) {
+    #main .thumb.category {
+        width: calc(33.333% - 1em);
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    #main .thumb.category {
+        width: calc(50% - 0.8em);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #main .thumb.category {
+        width: 100%;
+    }
+}
 
 /* =========================================================
    Poptrox – Originalbild ohne Overlay + Caption unter Bild
@@ -2090,4 +2222,15 @@ input, select, textarea {
 .poptrox-popup .caption p {
     margin: 0;
     color: #ffffff;
+}
+
+/* --------- ANIMATION --------- */
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Liegt hinter allen Elementen */
+    pointer-events: none; /* Blockiert keine Klicks */
 }

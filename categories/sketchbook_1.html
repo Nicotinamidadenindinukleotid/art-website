@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Sorrow and Serenity</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>
+							<a href="../index.html">between sorrow and serenity</a>
+							<span class="home-label">- SKETCHBOOK 1</span>
+						</h1>
+						<nav>
+							<ul>
+								<li><a href="#footer" class="icon solid fa-info-circle">About me</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main --> 
+					<div id="main"></div>
+					<!-- Automatische Bildgenerierung --> 
+					<script>
+						const imageBasePath = "/images/sketchbook_1";
+						const imageCount = 130;
+						const main = document.getElementById("main");
+
+						for (let i = imageCount; i >= 1; i--) {
+							main.insertAdjacentHTML("beforeend", `
+								<article class="thumb">
+									<a href="${imageBasePath}/fulls/sketch_${i}.WebP" class="image">
+										<img
+											src="${imageBasePath}/thumbs/sketch_th_${i}.WebP"
+											alt="Artwork ${i}"
+											loading="lazy"
+											decoding="async"
+										/>
+									</a>
+								</article>
+							`);
+						}
+					</script>
+					</div>
+
+		<!-- Footer PLATZHALTER -->
+			<div id="footer-container"></div>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.poptrox.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+		
+		<!-- Footer laden -->
+			<script>
+			fetch("../footer.html")
+				.then(response => {
+					if (!response.ok) {
+						throw new Error("Footer konnte nicht geladen werden.");
+					}
+					return response.text();
+				})
+				.then(html => {
+					document.getElementById("footer-container").outerHTML = html;
+
+					// main.js laden
+					const script = document.createElement("script");
+					script.src = "../assets/js/main.js";
+					document.body.appendChild(script);
+				})
+				.catch(error => {
+					console.error(error);
+				});
+			</script>
+
+    
+	</body>
+</html>
