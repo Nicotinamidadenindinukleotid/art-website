@@ -2234,3 +2234,9 @@ input, select, textarea {
     z-index: -1; /* Liegt hinter allen Elementen */
     pointer-events: none; /* Blockiert keine Klicks */
 }
+
+/* Kopieschutz */
+#main img {
+    -webkit-user-drag: none;
+    user-select: none;
+}
